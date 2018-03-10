@@ -12,14 +12,14 @@ body{
     margin: 0px auto;
 }
 h1{
-    margin: 0px auto;
+    padding-top: 50px;
     text-align:center;
     float:right;
-    width: 50%;
+    width: 60%;
 }
 
 .image{
-    width: 50%;
+    width: 40%;
     float:left;
 }
 
