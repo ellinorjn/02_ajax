@@ -19,6 +19,7 @@ function getSearchedMovie(movie = "remember+me") {
         .then((movies) => {
             console.log(movies)
             displayMovies(movies)
+        readMore(movieInformation)
         })
         .catch(function (error) {
             console.log(error);
@@ -27,10 +28,25 @@ function getSearchedMovie(movie = "remember+me") {
 }
 
 function displayMovies(movies) {
-    const visaFilm = document.getElementById('test')
+    const movieInformation = document.getElementById('movieInformation')
     let movieInfo = `<h2>${movies.Title}</h2>
                     <p>Released: ${movies.Released}</p>
                     <p>${movies.Plot}</p>
                     <p>IMDb rating: ${movies.imdbRating}</p>`;
     movieInformation.innerHTML = movieInfo;
 }
+
+
+function readMore(movieInformation){
+    const readMoreButton = document.createElement('button');
+    readMoreButton.className = "readMoreButton"
+    const textReadMoreButton = document.createTextNode('Read more')
+    readMoreButton.appendChild(textReadMoreButton)
+    movieInformation.appendChild(readMoreButton);
+    
+    readMoreButton.addEventListener('click', function(){
+        console.log("hej");
+    })
+}
+
+
