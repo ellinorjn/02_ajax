@@ -2,21 +2,61 @@ body{
     background-color: #c12020;
 }
 
+.clear{
+    clear:both;
+}
+
+.header{
+    background-color: white;
+    max-width: 700px;
+    margin: 0px auto;
+}
+h1{
+    margin: 0px auto;
+    text-align:center;
+    float:right;
+    width: 50%;
+}
+
+.image{
+    width: 50%;
+    float:left;
+}
+
 #movieInformation{
     background-color:white;
     min-height: 400px;
     max-width: 700px;
     margin: 0px auto;
+    
+}
+
+
+
+#movieInformation h2{
+    margin-top: 0px;
+    text-align: center;
+}
+
+#movieInformation p{
+    padding-left: 50px;
+    padding-right: 100px;
 }
 
 #divSearchField{
     background-color: white;
     margin: 0px auto;
     max-width: 700px;
-    height: 100px;
+    height: 150px;
 }
 
 .inputfieldAndButton{
     margin: 0px auto;
     text-align:center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+#searchMovie{
+    height: 40px;
 }
