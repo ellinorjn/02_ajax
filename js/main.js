@@ -12,11 +12,13 @@ searchMovie.addEventListener('keyup', function (e) {
 
 getSearchedMovie();
 
+let globalMovie = [];
 
 function getSearchedMovie(movie = "remember+me") {
     fetch('http://www.omdbapi.com/?apikey=da783fad&t=' + movie + '')
         .then((response) => response.json())
-        .then((movies) => {
+        .then(function (movies) {
+            globalMovie = movies;
             console.log(movies)
             displayMovies(movies)
             buttonReadMore(movieInformation)
@@ -36,8 +38,8 @@ function displayMovies(movies) {
     movieInformation.innerHTML = movieInfo;
 }
 
-
-function buttonReadMore(movieInformation) {
+/* Read more button */
+function buttonReadMore(movieInformation, movies) {
     const readMoreButton = document.createElement('button');
     readMoreButton.className = "readMoreButton"
     const textReadMoreButton = document.createTextNode('Read more')
@@ -46,13 +48,14 @@ function buttonReadMore(movieInformation) {
 
     readMoreButton.addEventListener('click', function () {
         console.log("hej");
+        readMore(globalMovie);
     })
 }
 
 
-function readMore(movies) {
+function readMore(globalMovie) {
     const moreInformationDiv = document.getElementById('moreInformation')
-    let moreInformation = `<p>${movies.Country}</p>`;
+    let moreInformation = `<p>${globalMovie.Country}</p>`;
     moreInformationDiv.innerHTML = moreInformation
 }
 
