@@ -6,8 +6,6 @@ body{
     height: 100px;
 }
 
-
-
 .clear{
     clear:both;
 }
@@ -37,16 +35,14 @@ h1{
     
 }
 
-
-
-#movieInformation h2{
-    margin-top: 0px;
-    text-align: center;
-}
-
-#movieInformation p{
+#movieInformation li{
     padding-left: 50px;
     padding-right: 100px;
+}
+
+.moreInformationButton:hover{
+    background-color: #c12020;
+    border: 2px solid #c12020;
 }
 
 #divSearchField{
@@ -54,13 +50,13 @@ h1{
     margin: 0px auto;
     max-width: 700px;
     height: 150px;
+    padding-top: 40px;
+    padding-bottom: -40px;
 }
 
 .inputfieldAndButton{
     margin: 0px auto;
     text-align:center;
-    padding-top: 30px;
-    padding-bottom: 20px;
 }
 
 #searchMovie{
