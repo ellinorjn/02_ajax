@@ -2,6 +2,12 @@ body{
     background-color: #c12020;
 }
 
+#movieInformation > img{
+    height: 100px;
+}
+
+
+
 .clear{
     clear:both;
 }
