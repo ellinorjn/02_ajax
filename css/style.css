@@ -22,6 +22,26 @@ h1{
     width: 60%;
 }
 
+/*Input field*/
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    text-align: center;
+    color: grey;
+    opacity: 0.5;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: grey;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: grey;
+}
+
+
 .image{
     width: 40%;
     float:left;
@@ -40,9 +60,10 @@ h1{
     padding-right: 100px;
 }
 
-.moreInformationButton:hover{
-    background-color: #c12020;
-    border: 2px solid #c12020;
+.moreInformationButton:hover, #searchMovieButton:hover{
+    background-color: darkgrey;
+    border: 2px solid grey;
+    opacity: 0.8;
 }
 
 #divSearchField{
@@ -62,3 +83,10 @@ h1{
 #searchMovie{
     height: 40px;
 }
+
+#searchMovie:focus{
+    outline: 2px solid #c12020;
+}
+
+#searchMovieButton
+

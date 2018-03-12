@@ -7,7 +7,7 @@ function getSearchedMovie(movie){
     fetch('http://www.omdbapi.com/?apikey=da783fad&s=' + movie + '')
     .then((response) => response.json())
     .then(function (movies){
-        //ha en tom array när man gör en ny sökning
+        //Make sure the array is ampty when doing a new search
         globalMovieArray.length=0;
         globalMovieArray.push(movies);
         console.log(movies)
