@@ -23,14 +23,19 @@ function getSearchedMovie(movie){
 searchMovie.addEventListener('keyup', function (e) {
     const searchValue = searchMovie.value;
     if (searchValue === "") {
-        const errorMessageIfInputIsEmpty = document.createElement('div')
-        const textErrorMessageIfInputIsEmpty = document.createTextNode('You have to wright a title to be able to search')
-        errorMessageIfInputIsEmpty.appendChild(textErrorMessageIfInputIsEmpty)
-        movieInformation.appendChild(errorMessageIfInputIsEmpty)
+        errorMessageForEmptySearch();
     }else if (e.keyCode === 13){
         getSearchedMovie(searchValue)
     }
 });
+
+function errorMessageForEmptySearch() {
+    const errorMessageIfInputIsEmpty = document.createElement('div')
+    const textErrorMessageIfInputIsEmpty = document.createTextNode('You have to wright a title to be able to search')
+    errorMessageIfInputIsEmpty.appendChild(textErrorMessageIfInputIsEmpty)
+    movieInformation.appendChild(errorMessageIfInputIsEmpty)
+}
+
 
 //searchMovieButton.addEventListener('click', getSearchedMovie)
 
