@@ -75,7 +75,7 @@ li{
     float:left;
 }
 
-.moreInformationButton:hover, #searchMovieButton:hover{
+.moreInformationButton:hover, #searchMovieButton:hover, .goBackButton:hover{
     background-color: darkgrey;
     border: 2px solid grey;
     opacity: 0.8;
@@ -134,3 +134,16 @@ p, li, h1, h2{
     clear: both;
 }
 
+.hidden{
+    display:none;
+}
+
+.goBackButton{
+    height: 40px;
+    
+}
+
+.divGoBackButton{
+    text-align: center;
+    margin-bottom: 30px;
+}

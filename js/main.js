@@ -6,6 +6,9 @@ const movieInformation = document.getElementById('movieInformation')
 
 let globalMovieArray = [];
 
+
+
+
 searchMovie.addEventListener('keyup', function (e) {
     const searchValue = searchMovie.value;
     if (searchValue === "") {
@@ -14,8 +17,6 @@ searchMovie.addEventListener('keyup', function (e) {
         getSearchedMovie(searchValue)
     }
 });
-
-
 
 //searchMovieButton.addEventListener('click', getSearchedMovie)
 
@@ -29,6 +30,12 @@ function getSearchedMovie(movie) {
             movieInformation.classList.remove('hidden')
             console.log(movies)
             displayMovies(movies)
+        
+        
+        /*localStorage.setItem("globalMovieArray", JSON.stringify(globalMovieArray));
+        var storedMovies = JSON.parse(localStorage.getItem("globalMovieArray"))
+
+        console.log(storedMovies);*/
             
         })
         .catch(function (error) {
@@ -119,9 +126,13 @@ function displayMoreInformationAboutMovie(theId) {
 
 function goBackToSearchButton(){
     const goBackButton = document.createElement('button')
+    const divGoBackButton = document.createElement('div')
+    divGoBackButton.classList.add("divGoBackButton")
+    goBackButton.classList.add("goBackButton")
     const textGoBackButton = document.createTextNode('Back To Search')
+    divGoBackButton.appendChild(goBackButton)
     goBackButton.appendChild(textGoBackButton)
-    movieInformation.appendChild(goBackButton)
+    movieInformation.appendChild(divGoBackButton)
     
     goBackButton.addEventListener('click', function(){
         console.log('hellu')
