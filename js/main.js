@@ -30,9 +30,6 @@ function getSearchedMovie(movie) {
             movieInformation.classList.remove('hidden')
             console.log(movies)
             displayMovies(movies)
-        
-        
-        
             
         })
         .catch(function (error) {
@@ -95,7 +92,7 @@ function buttonForMoreInformation(imdbID, div) {
 }
 
 function getMovieImdbId(imdbID) {
-    fetch('http://www.omdbapi.com/?apikey=da783fad&i=' + imdbID + '')
+    fetch('https://www.omdbapi.com/?apikey=da783fad&i=' + imdbID + '')
         .then((response) => response.json())
         .then((theId) => {
             console.log(theId);
