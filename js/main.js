@@ -68,65 +68,40 @@ function buttonForMoreInformation(imdbID) {
     })
 }
 
-function getMovieImdbId(imdbID){
+function getMovieImdbId(imdbID) {
     fetch('http://www.omdbapi.com/?apikey=da783fad&i=' + imdbID + '')
-          .then((response) => response.json())
-          .then ((theId) => {
-          console.log(theId);
-        displayMoreInformationAboutMovie(theId)
-          })
+        .then((response) => response.json())
+        .then((theId) => {
+            console.log(theId);
+            displayMoreInformationAboutMovie(theId)
+            goBackToSearchButton()
+        })
 }
 
 function displayMoreInformationAboutMovie(theId) {
     let displayMoreInformation = `
     <h2>${theId.Title}</h2>
+    <img src="${theId.Poster}" class="moviePoster">
     <p>${theId.imdbRating}</p>
     <p>${theId.Plot}</p>
     <p>${theId.Actors}</p>
+    <p>${theId.Genre}</p>
+    <p>${theId.Runtime}</p>
+    <p>${theId.Writer}</p>
+    <p>${theId.Released}</p>
     
 `;
+    
     movieInformation.innerHTML = displayMoreInformation;
 }
 
-
-
-
-/*
-function displayweather(weatherData){
-    const weatherInfoElement = document.getElementById('weatherInfo')
-    let weatherInfo = `
-        <img src="http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png"/>
-        <p> ${weatherData.weather[0].description} </p>
-        <p> ${weatherData.main.temp} </p>
-        <p> ${weatherData.wind.speed}m/s - ${weatherData.wind.deg} </p>
-        <p> Solen går upp ${weatherData.sys.sunrise} och går ner ${weatherData.sys.sunset}</p>
+function goBackToSearchButton(){
+    const goBackButton = document.createElement('button')
+    const textGoBackButton = document.createTextNode('Back To Search')
+    goBackButton.appendChild(textGoBackButton)
+    movieInformation.appendChild(goBackButton)
     
-    `;
-    weatherInfoElement.innerHTML = weatherInfo;
+    goBackButton.addEventListener('click', function(){
+        console.log('hellu')
+    })
 }
-
-
-
-function displayMovies(movies) {
-    console.log(globalMovieArray);
-    let searchedMovies = globalMovieArray[0].Search;
-    for (i = 0; i < searchedMovies.length; i++) {
-        const movieTitleListed = document.createElement('li');
-        const movieTitle = document.createTextNode(`${movies.Search[i].Title}`)
-        movieTitleListed.appendChild(movieTitle);
-        movieInformation.appendChild(movieTitleListed);
-
-        buttonForMoreInformation(movies.Search[i].imdbID)
-        console.log(movies.Search[i].Title);
-    }
-}
-
-*/
-
-
-
-
-
-
-
-
