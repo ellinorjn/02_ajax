@@ -73,5 +73,60 @@ function getMovieImdbId(imdbID){
           .then((response) => response.json())
           .then ((theId) => {
           console.log(theId);
+        displayMoreInformationAboutMovie(theId)
           })
 }
+
+function displayMoreInformationAboutMovie(theId) {
+    let displayMoreInformation = `
+    <h2>${theId.Title}</h2>
+    <p>${theId.imdbRating}</p>
+    <p>${theId.Plot}</p>
+    <p>${theId.Actors}</p>
+    
+`;
+    movieInformation.innerHTML = displayMoreInformation;
+}
+
+
+
+
+/*
+function displayweather(weatherData){
+    const weatherInfoElement = document.getElementById('weatherInfo')
+    let weatherInfo = `
+        <img src="http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png"/>
+        <p> ${weatherData.weather[0].description} </p>
+        <p> ${weatherData.main.temp} </p>
+        <p> ${weatherData.wind.speed}m/s - ${weatherData.wind.deg} </p>
+        <p> Solen går upp ${weatherData.sys.sunrise} och går ner ${weatherData.sys.sunset}</p>
+    
+    `;
+    weatherInfoElement.innerHTML = weatherInfo;
+}
+
+
+
+function displayMovies(movies) {
+    console.log(globalMovieArray);
+    let searchedMovies = globalMovieArray[0].Search;
+    for (i = 0; i < searchedMovies.length; i++) {
+        const movieTitleListed = document.createElement('li');
+        const movieTitle = document.createTextNode(`${movies.Search[i].Title}`)
+        movieTitleListed.appendChild(movieTitle);
+        movieInformation.appendChild(movieTitleListed);
+
+        buttonForMoreInformation(movies.Search[i].imdbID)
+        console.log(movies.Search[i].Title);
+    }
+}
+
+*/
+
+
+
+
+
+
+
+
