@@ -1,13 +1,15 @@
 const searchMovie = document.getElementById('searchMovie')
 const searchMovieButton = document.getElementById('searchMovieButton')
 
+const movieInformation = document.getElementById('movieInformation')
+
+
 let globalMovieArray = [];
 
 searchMovie.addEventListener('keyup', function (e) {
     const searchValue = searchMovie.value;
     if (searchValue === "") {
         errorMessageForEmptySearch();
-    
     } else if (e.keyCode === 13) {
         getSearchedMovie(searchValue)
     }
@@ -24,8 +26,10 @@ function getSearchedMovie(movie) {
             //Make sure the array is ampty when doing a new search
             globalMovieArray.length = 0;
             globalMovieArray.push(movies);
+            movieInformation.classList.remove('hidden')
             console.log(movies)
             displayMovies(movies)
+            
         })
         .catch(function (error) {
             console.log(error);
@@ -35,42 +39,52 @@ function getSearchedMovie(movie) {
 
 //Create error message when doing an empty search
 function errorMessageForEmptySearch() {
-    const errorMessageIfInputIsEmpty = document.createElement('div')
-    const textErrorMessageIfInputIsEmpty = document.createTextNode('You have to wright a title to be able to search')
+    const errorMessageIfInputIsEmpty = document.createElement('p')
+    const textErrorMessageIfInputIsEmpty = document.createTextNode('You have to write a title to be able to search')
     errorMessageIfInputIsEmpty.appendChild(textErrorMessageIfInputIsEmpty)
     movieInformation.appendChild(errorMessageIfInputIsEmpty)
 }
 
-const movieInformation = document.getElementById('movieInformation')
+
 
 function displayMovies(movies) {
     console.log(globalMovieArray);
     //Error message
     if (movies.Response === "False") {
+        const noMoviesFound = document.createElement('p');
+        const textNoMoviesFound = document.createTextNode(`${movies.Error} Please try again`);
+        noMoviesFound.appendChild(textNoMoviesFound);
+        movieInformation.appendChild(noMoviesFound);
         console.log("nyh");}
     
     let searchedMovies = globalMovieArray[0].Search;
     for (i = 0; i < searchedMovies.length; i++) {
+        //Div for listed movie and button
+        const liAndButtonDiv = document.createElement('div')
+        liAndButtonDiv.classList.add('liAndButtonDiv')
+        //Create li element for search result
         const movieTitleListed = document.createElement('li');
         movieTitleListed.className = "clear"
         const movieTitle = document.createTextNode(`${movies.Search[i].Title}`)
         movieTitleListed.appendChild(movieTitle);
-        movieInformation.appendChild(movieTitleListed);
+        liAndButtonDiv.appendChild(movieTitleListed);
+        movieInformation.appendChild(liAndButtonDiv);
 
-        buttonForMoreInformation(movies.Search[i].imdbID)
+        buttonForMoreInformation(movies.Search[i].imdbID, liAndButtonDiv)
         console.log(movies.Search[i].Title);
     }
 }
 
-function buttonForMoreInformation(imdbID) {
+function buttonForMoreInformation(imdbID, div) {
     const moreInformationButton = document.createElement('button');
-    moreInformationButton.className = "clear";
     const textMoreInformationButton = document.createTextNode('More info.')
     moreInformationButton.id = imdbID
     moreInformationButton.appendChild(textMoreInformationButton)
-    movieInformation.appendChild(moreInformationButton);
+    div.appendChild(moreInformationButton);
 
     moreInformationButton.addEventListener('click', function () {
+        const searchField = document.getElementById('divSearchField')
+        searchField.classList.add('hidden')
         //console.log(this.id)
         getMovieImdbId(imdbID);
     })

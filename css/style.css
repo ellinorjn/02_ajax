@@ -11,9 +11,6 @@ body{
     clear:both;
 }
 
-button{
-    float:right;
-}
 .header{
     background-color: white;
     max-width: 700px;
@@ -60,8 +57,8 @@ h2{
 
 #movieInformation{
     background-color:white;
-    min-height: 400px;
     max-width: 700px;
+    height: 100%;
     margin: 0px auto;
 }
 
@@ -128,3 +125,12 @@ p, li, h1, h2{
 .moviePoster img{
     height: 250px;
 }
+
+.liAndButtonDiv button{
+    float:right;   
+}
+
+.liAndButtonDiv{
+    clear: both;
+}
+
