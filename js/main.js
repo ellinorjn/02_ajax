@@ -21,7 +21,7 @@ searchMovie.addEventListener('keyup', function (e) {
 //searchMovieButton.addEventListener('click', getSearchedMovie)
 
 function getSearchedMovie(movie) {
-    fetch('http://www.omdbapi.com/?apikey=da783fad&s=' + movie + '')
+    fetch('https://www.omdbapi.com/?apikey=da783fad&s=' + movie + '')
         .then((response) => response.json())
         .then(function (movies) {
             //Make sure the array is ampty when doing a new search
@@ -32,10 +32,7 @@ function getSearchedMovie(movie) {
             displayMovies(movies)
         
         
-        /*localStorage.setItem("globalMovieArray", JSON.stringify(globalMovieArray));
-        var storedMovies = JSON.parse(localStorage.getItem("globalMovieArray"))
-
-        console.log(storedMovies);*/
+        
             
         })
         .catch(function (error) {
@@ -135,6 +132,10 @@ function goBackToSearchButton(){
     movieInformation.appendChild(divGoBackButton)
     
     goBackButton.addEventListener('click', function(){
-        console.log('hellu')
+        
+        localStorage.setItem("globalMovieArray", JSON.stringify(globalMovieArray));
+        const storedMovies = JSON.parse(localStorage.getItem("globalMovieArray"))
+        
+        console.log(storedMovies);
     })
 }
