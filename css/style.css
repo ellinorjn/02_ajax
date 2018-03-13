@@ -3,13 +3,17 @@ body{
 }
 
 #movieInformation > img{
-    height: 100px;
+    
+    margin: 0px auto;
 }
 
 .clear{
     clear:both;
 }
 
+button{
+    float:right;
+}
 .header{
     background-color: white;
     max-width: 700px;
@@ -24,7 +28,9 @@ h1{
 
 h2{
     text-align: center;
+    margin: 0px auto;
     width: 70%;
+    padding-bottom: 25px;
 }
 
 /*Input field*/
@@ -57,12 +63,19 @@ h2{
     min-height: 400px;
     max-width: 700px;
     margin: 0px auto;
-    
 }
 
-#movieInformation li{
+#movieInformation li, p{
     padding-left: 50px;
     padding-right: 100px;
+}
+
+.moreInformationButton{
+    float:right:
+}
+
+li{
+    float:left;
 }
 
 .moreInformationButton:hover, #searchMovieButton:hover{
@@ -75,9 +88,8 @@ h2{
     background-color: white;
     margin: 0px auto;
     max-width: 700px;
-    height: 150px;
-    padding-top: 40px;
-    padding-bottom: -40px;
+    height: 100px;
+    padding-top: 50px;
 }
 
 .inputfieldAndButton{
@@ -93,7 +105,7 @@ h2{
     outline: 2px solid #c12020;
 }
 
-p, li{
+p, li, h1, h2{
     font-family: 'Raleway', sans-serif;
 }
 
@@ -101,7 +113,18 @@ p, li{
     font-weight: bolder;
 }
 
-.plot{
-    text-align:center;
-    font-style:italic;
+#movieInformation > p:nth-child(3){
+    max-width: 50%; 
+    padding: 0px;
+    text-align: center;
+    margin:0px auto;
+    font-style: italic;
+}
+
+.moviePoster{
+    text-align:center;    
+}
+
+.moviePoster img{
+    height: 250px;
 }

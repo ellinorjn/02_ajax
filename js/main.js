@@ -7,10 +7,13 @@ searchMovie.addEventListener('keyup', function (e) {
     const searchValue = searchMovie.value;
     if (searchValue === "") {
         errorMessageForEmptySearch();
+    
     } else if (e.keyCode === 13) {
         getSearchedMovie(searchValue)
     }
 });
+
+
 
 //searchMovieButton.addEventListener('click', getSearchedMovie)
 
@@ -42,9 +45,14 @@ const movieInformation = document.getElementById('movieInformation')
 
 function displayMovies(movies) {
     console.log(globalMovieArray);
+    //Error message
+    if (movies.Response === "False") {
+        console.log("nyh");}
+    
     let searchedMovies = globalMovieArray[0].Search;
     for (i = 0; i < searchedMovies.length; i++) {
         const movieTitleListed = document.createElement('li');
+        movieTitleListed.className = "clear"
         const movieTitle = document.createTextNode(`${movies.Search[i].Title}`)
         movieTitleListed.appendChild(movieTitle);
         movieInformation.appendChild(movieTitleListed);
@@ -56,7 +64,7 @@ function displayMovies(movies) {
 
 function buttonForMoreInformation(imdbID) {
     const moreInformationButton = document.createElement('button');
-    moreInformationButton.className = "moreInformationButton";
+    moreInformationButton.className = "clear";
     const textMoreInformationButton = document.createTextNode('More info.')
     moreInformationButton.id = imdbID
     moreInformationButton.appendChild(textMoreInformationButton)
@@ -81,8 +89,8 @@ function getMovieImdbId(imdbID) {
 function displayMoreInformationAboutMovie(theId) {
     let displayMoreInformation = `
     <h2>${theId.Title}</h2>
-    <img src="${theId.Poster}" class="moviePoster">
-    <p><span class="plot">${theId.Plot}</span></p>
+    <div class="moviePoster"><img src="${theId.Poster}"></div>
+    <p><span class="plot">"${theId.Plot}"</span></p>
     <p><span class="bold">Imdb rating: </span> ${theId.imdbRating}</p>
     <p><span class="bold">Actors: </span>${theId.Actors}</p>
     <p><span class="bold">Genres: </span>${theId.Genre}</p>
