@@ -9,6 +9,7 @@ function getSearchedMovie(movie){
     .then(function (movies){
         //Make sure the array is ampty when doing a new search
         globalMovieArray.length=0;
+        errorMessageForEmptySearch();
         globalMovieArray.push(movies);
         console.log(movies)
         displayMovies(movies)
@@ -18,6 +19,17 @@ function getSearchedMovie(movie){
     })
     searchMovie.value = "";
 }
+
+//Make sure the user is searching for something
+function errorMessageForEmptySearch(){
+    if(searchMovie.value === ""){
+        const errorMessageIfInputIsEmpty = document.createElement('div')
+        const textErrorMessageIfInputIsEmpty = document.createTextNode('You have to wright a title to be able to search')
+        errorMessageIfInputIsEmpty.appendChild(textErrorMessageIfInputIsEmpty)
+        movieInformation.appendChild(errorMessageIfInputIsEmpty)
+    }
+}
+
 
 searchMovie.addEventListener('keyup', function(e){
     const searchValue = searchMovie.value;
@@ -34,8 +46,8 @@ function displayMovies(movies){
     console.log(globalMovieArray);
     let searchedMovies = globalMovieArray[0].Search;
     for(i=0; i < searchedMovies.length; i++){
-        let movieTitleListed = document.createElement('li');
-        let movieTitle = document.createTextNode(`${movies.Search[i].Title}`)
+        const movieTitleListed = document.createElement('li');
+        const movieTitle = document.createTextNode(`${movies.Search[i].Title}`)
         movieTitleListed.appendChild(movieTitle);
         movieInformation.appendChild(movieTitleListed);
         
@@ -52,7 +64,8 @@ function buttonForMoreInformation(){
     movieInformation.appendChild(moreInformationButton);
     
     moreInformationButton.addEventListener('click', function(){
-        console.log("hellu");
+        var test = this.parentNode;
+        console.log(test);
     })
 }
 
