@@ -82,13 +82,13 @@ function displayMoreInformationAboutMovie(theId) {
     let displayMoreInformation = `
     <h2>${theId.Title}</h2>
     <img src="${theId.Poster}" class="moviePoster">
-    <p>${theId.imdbRating}</p>
-    <p>${theId.Plot}</p>
-    <p>${theId.Actors}</p>
-    <p>${theId.Genre}</p>
-    <p>${theId.Runtime}</p>
-    <p>${theId.Writer}</p>
-    <p>${theId.Released}</p>
+    <p><span class="plot">${theId.Plot}</span></p>
+    <p><span class="bold">Imdb rating: </span> ${theId.imdbRating}</p>
+    <p><span class="bold">Actors: </span>${theId.Actors}</p>
+    <p><span class="bold">Genres: </span>${theId.Genre}</p>
+    <p><span class="bold">Runtime: </span>${theId.Runtime}</p>
+    <p><span class="bold">Writer(s): </span>${theId.Writer}</p>
+    <p><span class="bold">Released: </span>${theId.Released}</p>
     
 `;
     
