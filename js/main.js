@@ -3,11 +3,7 @@ const searchMovieButton = document.getElementById('searchMovieButton')
 
 const movieInformation = document.getElementById('movieInformation')
 
-
 let globalMovieArray = [];
-
-
-
 
 searchMovie.addEventListener('keyup', function (e) {
     const searchValue = searchMovie.value;
@@ -30,7 +26,7 @@ function getSearchedMovie(movie) {
             movieInformation.classList.remove('hidden')
             console.log(movies)
             displayMovies(movies)
-            
+
         })
         .catch(function (error) {
             console.log(error);
@@ -56,8 +52,9 @@ function displayMovies(movies) {
         const textNoMoviesFound = document.createTextNode(`${movies.Error} Please try again`);
         noMoviesFound.appendChild(textNoMoviesFound);
         movieInformation.appendChild(noMoviesFound);
-        console.log("nyh");}
-    
+        console.log("nyh");
+    }
+
     let searchedMovies = globalMovieArray[0].Search;
     for (i = 0; i < searchedMovies.length; i++) {
         //Div for listed movie and button
@@ -114,11 +111,11 @@ function displayMoreInformationAboutMovie(theId) {
     <p><span class="bold">Released: </span>${theId.Released}</p>
     
 `;
-    
+
     movieInformation.innerHTML = displayMoreInformation;
 }
 
-function goBackToSearchButton(){
+function goBackToSearchButton() {
     const goBackButton = document.createElement('button')
     const divGoBackButton = document.createElement('div')
     divGoBackButton.classList.add("divGoBackButton")
@@ -127,12 +124,13 @@ function goBackToSearchButton(){
     divGoBackButton.appendChild(goBackButton)
     goBackButton.appendChild(textGoBackButton)
     movieInformation.appendChild(divGoBackButton)
-    
-    goBackButton.addEventListener('click', function(){
-        
+
+    goBackButton.addEventListener('click', function () {
+
         localStorage.setItem("globalMovieArray", JSON.stringify(globalMovieArray));
         const storedMovies = JSON.parse(localStorage.getItem("globalMovieArray"))
-        
+
+        displayMovies(storedMovies);
         console.log(storedMovies);
     })
 }
