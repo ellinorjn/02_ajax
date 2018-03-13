@@ -9,7 +9,6 @@ function getSearchedMovie(movie){
     .then(function (movies){
         //Make sure the array is ampty when doing a new search
         globalMovieArray.length=0;
-        errorMessageForEmptySearch();
         globalMovieArray.push(movies);
         console.log(movies)
         displayMovies(movies)
@@ -20,20 +19,15 @@ function getSearchedMovie(movie){
     searchMovie.value = "";
 }
 
-//Make sure the user is searching for something
-function errorMessageForEmptySearch(){
-    if(searchMovie.value === ""){
+
+searchMovie.addEventListener('keyup', function (e) {
+    const searchValue = searchMovie.value;
+    if (searchValue === "") {
         const errorMessageIfInputIsEmpty = document.createElement('div')
         const textErrorMessageIfInputIsEmpty = document.createTextNode('You have to wright a title to be able to search')
         errorMessageIfInputIsEmpty.appendChild(textErrorMessageIfInputIsEmpty)
         movieInformation.appendChild(errorMessageIfInputIsEmpty)
-    }
-}
-
-
-searchMovie.addEventListener('keyup', function(e){
-    const searchValue = searchMovie.value;
-    if (e.keyCode === 13) {
+    }else if (e.keyCode === 13){
         getSearchedMovie(searchValue)
     }
 });
