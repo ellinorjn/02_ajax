@@ -60,19 +60,12 @@ h2{
     max-width: 700px;
     height: 100%;
     margin: 0px auto;
+    padding-bottom: 50px;
 }
 
-#movieInformation li, p{
+#movieInformation p{
     padding-left: 50px;
     padding-right: 100px;
-}
-
-.moreInformationButton{
-    float:right:
-}
-
-li{
-    float:left;
 }
 
 .moreInformationButton:hover, #searchMovieButton:hover, .goBackButton:hover{
@@ -126,12 +119,20 @@ p, li, h1, h2{
     height: 250px;
 }
 
-.liAndButtonDiv button{
-    float:right;   
+.infoButton{
+    float:right; 
+    
+}
+
+li{
+    float:left;
 }
 
 .liAndButtonDiv{
     clear: both;
+    padding: 20px;
+    margin-left: 80px;
+    margin-right: 20px;
 }
 
 .hidden{
@@ -147,3 +148,73 @@ p, li, h1, h2{
     text-align: center;
     margin-bottom: 30px;
 }
+
+
+/* --------------------------------------------- */
+
+
+
+
+.spinner {
+  margin: 100px auto 0;
+  width: 70px;
+  text-align: center;
+    display:none;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #333;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% { 
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

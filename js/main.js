@@ -1,7 +1,9 @@
 const searchMovie = document.getElementById('searchMovie')
 const searchMovieButton = document.getElementById('searchMovieButton')
 
-const movieInformation = document.getElementById('movieInformation')
+
+const spinner = document.getElementById('spinner')
+movieInformation.appendChild(spinner)
 
 let globalMovieArray = [];
 
@@ -11,7 +13,7 @@ searchMovie.addEventListener('keyup', function (e) {
         errorMessageForEmptySearch();
     } else if (e.keyCode === 13) {
         getSearchedMovie(searchValue)
-    }
+    } 
 });
 
 //searchMovieButton.addEventListener('click', getSearchedMovie)
@@ -19,23 +21,24 @@ searchMovie.addEventListener('keyup', function (e) {
 function getSearchedMovie(movie) {
     fetch('https://www.omdbapi.com/?apikey=da783fad&s=' + movie + '')
         .then((response) => response.json())
-        .then(function (movies) {
+        .then(function (movies) { 
             //Make sure the array is ampty when doing a new search
             globalMovieArray.length = 0;
             globalMovieArray.push(movies);
             movieInformation.classList.remove('hidden')
             console.log(movies)
             displayMovies(movies)
-
         })
         .catch(function (error) {
             console.log(error);
         })
+    spinner.style.display="block";
     searchMovie.value = "";
 }
 
 //Create error message when doing an empty search
 function errorMessageForEmptySearch() {
+    spinner.style.display="none";
     const errorMessageIfInputIsEmpty = document.createElement('p')
     const textErrorMessageIfInputIsEmpty = document.createTextNode('You have to write a title to be able to search')
     errorMessageIfInputIsEmpty.appendChild(textErrorMessageIfInputIsEmpty)
@@ -48,6 +51,7 @@ function displayMovies(movies) {
     console.log(globalMovieArray);
     //Error message
     if (movies.Response === "False") {
+        spinner.style.display="none";
         const noMoviesFound = document.createElement('p');
         const textNoMoviesFound = document.createTextNode(`${movies.Error} Please try again`);
         noMoviesFound.appendChild(textNoMoviesFound);
@@ -62,23 +66,26 @@ function displayMovies(movies) {
         liAndButtonDiv.classList.add('liAndButtonDiv')
         //Create li element for search result
         const movieTitleListed = document.createElement('li');
-        movieTitleListed.className = "clear"
+        movieTitleListed.classList.add = ('clear')
         const movieTitle = document.createTextNode(`${movies.Search[i].Title}`)
+        
         movieTitleListed.appendChild(movieTitle);
         liAndButtonDiv.appendChild(movieTitleListed);
         movieInformation.appendChild(liAndButtonDiv);
 
         buttonForMoreInformation(movies.Search[i].imdbID, liAndButtonDiv)
         console.log(movies.Search[i].Title);
+        spinner.style.display="none";
     }
 }
 
-function buttonForMoreInformation(imdbID, div) {
+function buttonForMoreInformation(imdbID, liAndButtonDiv) {
     const moreInformationButton = document.createElement('button');
+    moreInformationButton.classList.add("infoButton")
     const textMoreInformationButton = document.createTextNode('More info.')
     moreInformationButton.id = imdbID
     moreInformationButton.appendChild(textMoreInformationButton)
-    div.appendChild(moreInformationButton);
+    liAndButtonDiv.appendChild(moreInformationButton);
 
     moreInformationButton.addEventListener('click', function () {
         const searchField = document.getElementById('divSearchField')
@@ -92,9 +99,11 @@ function getMovieImdbId(imdbID) {
     fetch('https://www.omdbapi.com/?apikey=da783fad&i=' + imdbID + '')
         .then((response) => response.json())
         .then((theId) => {
+            spinner.style.display="block";
             console.log(theId);
             displayMoreInformationAboutMovie(theId)
             goBackToSearchButton()
+        
         })
 }
 
@@ -128,9 +137,18 @@ function goBackToSearchButton() {
     goBackButton.addEventListener('click', function () {
 
         localStorage.setItem("globalMovieArray", JSON.stringify(globalMovieArray));
-        const storedMovies = JSON.parse(localStorage.getItem("globalMovieArray"))
+        const storedMovies = JSON.parse(localStorage.getItem("globalMovieArray"));
 
         displayMovies(storedMovies);
         console.log(storedMovies);
     })
 }
+
+
+
+
+
+
+
+
+
