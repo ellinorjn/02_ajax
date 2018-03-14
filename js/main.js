@@ -83,7 +83,7 @@ function displayMovies(movies) {
 function buttonForMoreInformation(imdbID, liAndButtonDiv) {
     const moreInformationButton = document.createElement('button');
     moreInformationButton.classList.add("infoButton")
-    const textMoreInformationButton = document.createTextNode('More info.')
+    const textMoreInformationButton = document.createTextNode('Read more!')
     moreInformationButton.id = imdbID
     moreInformationButton.appendChild(textMoreInformationButton)
     liAndButtonDiv.appendChild(moreInformationButton);

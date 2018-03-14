@@ -1,5 +1,5 @@
 body{
-    background-color: #c12020;
+    background-color: #d6d4d4;
 }
 
 #movieInformation > img{
@@ -99,7 +99,7 @@ h2{
 }
 
 #searchMovie:focus{
-    outline: 2px solid #c12020;
+    outline: 2px solid darkgrey;
 }
 
 p, li, h1, h2{
