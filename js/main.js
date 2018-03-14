@@ -42,13 +42,18 @@ function getSearchedMovie(movie) {
     searchMovie.value = "";
 }
 
+function test(){
+    if(movieInformation.length > 0){
+        movieInformation[0].parentNode.removeChild(movieInformation[0])
+    }
+}
+
 //Create error message when doing an empty search
 function errorMessageForEmptySearch() {
     spinner.style.display = "none";
-    const errorMessageIfInputIsEmpty = document.createElement('p')
-    const textErrorMessageIfInputIsEmpty = document.createTextNode('You have to write a title to be able to search')
-    errorMessageIfInputIsEmpty.appendChild(textErrorMessageIfInputIsEmpty)
-    movieInformation.appendChild(errorMessageIfInputIsEmpty)
+    let errorMessageIfInputIsEmpty = `
+        <p>You have to write a title to be able to search</p>`
+    movieInformation.innerHTML=errorMessageIfInputIsEmpty
 }
 
 
@@ -57,13 +62,15 @@ function displayMovies(movies) {
     console.log(globalMovieArray);
     //Error message
     if (movies.Response === "False") {
-        spinner.style.display = "none";
-        const noMoviesFound = document.createElement('p');
+        spinner.style.display = "block";
+        let noMoviesFound = `<p>${movies.Error} Please try again</p>`
+        movieInformation.innerHTML = noMoviesFound
+        /*const noMoviesFound = document.createElement('p');
         noMoviesFound.setAttribute("id", "noMoviesFound")
         const textNoMoviesFound = document.createTextNode(`${movies.Error} Please try again`);
         noMoviesFound.appendChild(textNoMoviesFound);
         movieInformation.appendChild(noMoviesFound);
-        console.log("nyh");
+        console.log("nyh");*/
     }
 
     let searchedMovies = globalMovieArray[0].Search;
@@ -79,7 +86,7 @@ function displayMovies(movies) {
         movieTitleListed.appendChild(movieTitle);
         liAndButtonDiv.appendChild(movieTitleListed);
         movieInformation.appendChild(liAndButtonDiv);
-
+        
         buttonForMoreInformation(movies.Search[i].imdbID, liAndButtonDiv)
         console.log(movies.Search[i].Title);
         spinner.style.display = "none";

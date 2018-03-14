@@ -1,6 +1,7 @@
 Ellinor Jansson
-länk till projektet live på GitHub Pages samt länk till själva GitHub-repositoriet.
-https://github.com/ellinorjn/02_ajax
+
+GitHub Pages: https://ellinorjn.github.io/02_ajax/
+GitHub-repo: https://github.com/ellinorjn/02_ajax
 
 kort beskrivning av applikationen, dess syfte och funktionalitet.
 punktlista med vilka teknologier du använt.
