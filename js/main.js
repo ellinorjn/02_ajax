@@ -53,6 +53,7 @@ function displayMovies(movies) {
     if (movies.Response === "False") {
         spinner.style.display="none";
         const noMoviesFound = document.createElement('p');
+        noMoviesFound.setAttribute("id", "noMoviesFound")
         const textNoMoviesFound = document.createTextNode(`${movies.Error} Please try again`);
         noMoviesFound.appendChild(textNoMoviesFound);
         movieInformation.appendChild(noMoviesFound);
