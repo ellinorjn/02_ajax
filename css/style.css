@@ -24,17 +24,12 @@ main {
 
 .header {
     background-color: white;
-    max-width: 700px;
     margin: 0px auto;
+    text-align:center;
 }
 
 .image {
-    float: left;
-    width: 40%;
-}
-
-li {
-    float: left;
+    max-width: 60%;
 }
 
 p,
@@ -47,8 +42,7 @@ h2 {
 h1 {
     padding-top: 50px;
     text-align: center;
-    float: right;
-    width: 60%;
+    padding: 20px;
 }
 
 h2 {
@@ -58,10 +52,7 @@ h2 {
     padding-bottom: 25px;
 }
 
-#movieInformation p {
-    padding-left: 50px;
-    padding-right: 100px;
-}
+
 
 #noMoviesFound {
     text-align: center;
@@ -117,14 +108,13 @@ h2 {
 }
 
 .infoButton {
-    float: right;
+    float: left;
 }
 
 .liAndButtonDiv {
     clear: both;
     padding: 20px;
-    margin-left: 80px;
-    margin-right: 20px;
+    
 }
 
 #searchMovieButton:hover,
@@ -209,4 +199,39 @@ h2 {
         -webkit-transform: scale(1.0);
         transform: scale(1.0);
     }
+}
+
+@media screen and (min-width: 600px){
+    .header {
+    background-color: white;
+    max-width: 700px;
+    margin: 0px auto;
+}
+
+.image {
+    float: left;
+    width: 40%;
+}
+    
+h1 {
+    padding:0px;
+    padding-top: 50px;
+    text-align: center;
+    float: right;
+    width: 60%;
+}  
+    
+li {
+    float: left;
+}
+    
+#movieInformation p {
+    padding-left: 50px;
+    padding-right: 100px;
+}
+.liAndButtonDiv {
+    margin-left: 80px;
+    margin-right: 20px;
+} 
+    
 }
