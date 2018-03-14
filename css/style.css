@@ -1,36 +1,85 @@
-body{
+body {
     background-color: #d6d4d4;
 }
 
-#movieInformation > img{
-    
+main {
+    background-color: white;
+    max-width: 700px;
+    height: 100%;
     margin: 0px auto;
+    padding-top: 40px;
 }
 
-.clear{
-    clear:both;
+/*#movieInformation>img {
+    margin: 0px auto;
+}*/
+
+.clear {
+    clear: both;
 }
 
-.header{
+.bold {
+    font-weight: bolder;
+}
+
+.header {
     background-color: white;
     max-width: 700px;
     margin: 0px auto;
 }
-h1{
+
+.image {
+    float: left;
+    width: 40%;
+}
+
+li {
+    float: left;
+}
+
+p,
+li,
+h1,
+h2 {
+    font-family: 'Raleway', sans-serif;
+}
+
+h1 {
     padding-top: 50px;
-    text-align:center;
-    float:right;
+    text-align: center;
+    float: right;
     width: 60%;
 }
 
-h2{
+h2 {
     text-align: center;
     margin: 0px auto;
     width: 70%;
     padding-bottom: 25px;
 }
 
+#movieInformation p {
+    padding-left: 50px;
+    padding-right: 100px;
+}
+
+#noMoviesFound {
+    text-align: center;
+    font-style: italic;
+    margin: 0px;
+}
+
+#movieInformation>p:nth-child(3) {
+    max-width: 50%;
+    padding: 0px;
+    text-align: center;
+    margin: 0px auto;
+    font-style: italic;
+}
+
+
 /*Input field*/
+
 ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     text-align: center;
@@ -49,179 +98,115 @@ h2{
     color: grey;
 }
 
-
-.image{
-    width: 40%;
-    float:left;
-}
-
-#movieInformation{
-    background-color:white;
-    max-width: 700px;
-    height: 100%;
+.inputfieldAndButton {
     margin: 0px auto;
-    padding-bottom: 50px;
-}
-
-#movieInformation p{
-    padding-left: 50px;
-    padding-right: 100px;
-}
-
-#noMoviesFound {
     text-align: center;
-    font-style:italic;
-    margin:0px;
 }
 
-
-.moreInformationButton:hover, #searchMovieButton:hover, .goBackButton:hover{
-    background-color: darkgrey;
-    border: 2px solid grey;
-    opacity: 0.8;
-}
-
-#divSearchField{
-    background-color: white;
-    margin: 0px auto;
-    max-width: 700px;
-    height: 100px;
-    padding-top: 50px;
-}
-
-.inputfieldAndButton{
-    margin: 0px auto;
-    text-align:center;
-}
-
-#searchMovie{
+#searchMovie {
     height: 40px;
 }
 
-#searchMovie:focus{
+#searchMovie:focus {
     outline: 2px solid darkgrey;
 }
 
-p, li, h1, h2{
-    font-family: 'Raleway', sans-serif;
+#movieInformation {
+    padding-top: 40px;
+    padding-bottom: 50px;
 }
 
-.bold{
-    font-weight: bolder;
+.infoButton {
+    float: right;
 }
 
-#movieInformation > p:nth-child(3){
-    max-width: 50%; 
-    padding: 0px;
-    text-align: center;
-    margin:0px auto;
-    font-style: italic;
-}
-
-.moviePoster{
-    text-align:center;    
-}
-
-.moviePoster img{
-    height: 250px;
-}
-
-.infoButton{
-    float:right; 
-    
-}
-
-li{
-    float:left;
-}
-
-.liAndButtonDiv{
+.liAndButtonDiv {
     clear: both;
     padding: 20px;
     margin-left: 80px;
     margin-right: 20px;
 }
 
-.hidden{
-    display:none;
+#searchMovieButton:hover,
+.moreInformationButton:hover,
+.goBackButton:hover {
+    background-color: darkgrey;
+    border: 2px solid grey;
+    opacity: 0.8;
 }
 
-.goBackButton{
+.moviePoster {
+    text-align: center;
+}
+
+.moviePoster img {
+    height: 250px;
+}
+
+.hidden {
+    display: none;
+}
+
+.goBackButton {
     height: 40px;
-    
 }
 
-.divGoBackButton{
+.divGoBackButton {
     text-align: center;
     margin-bottom: 30px;
 }
 
 
-/* --------------------------------------------- */
-
-
-
+/* Loading bar */
 
 .spinner {
-  margin: 100px auto 0;
-  width: 70px;
-  text-align: center;
-    display:none;
+    margin: 100px auto 0;
+    margin-top: 0px;
+    width: 70px;
+    text-align: center;
+    display: none;
 }
 
-.spinner > div {
-  width: 18px;
-  height: 18px;
-  background-color: #333;
-
-  border-radius: 100%;
-  display: inline-block;
-  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+.spinner>div {
+    width: 18px;
+    height: 18px;
+    background-color: #333;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 }
 
 .spinner .bounce1 {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
 }
 
 .spinner .bounce2 {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
 }
 
 @-webkit-keyframes sk-bouncedelay {
-  0%, 80%, 100% { -webkit-transform: scale(0) }
-  40% { -webkit-transform: scale(1.0) }
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0)
+    }
+    40% {
+        -webkit-transform: scale(1.0)
+    }
 }
 
 @keyframes sk-bouncedelay {
-  0%, 80%, 100% { 
-    -webkit-transform: scale(0);
-    transform: scale(0);
-  } 40% { 
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
-  }
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    40% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
