@@ -10,6 +10,7 @@ main {
     padding-top: 40px;
 }
 
+
 /*#movieInformation>img {
     margin: 0px auto;
 }*/
@@ -25,7 +26,7 @@ main {
 .header {
     background-color: white;
     margin: 0px auto;
-    text-align:center;
+    text-align: center;
 }
 
 .image {
@@ -51,8 +52,6 @@ h2 {
     width: 70%;
     padding-bottom: 25px;
 }
-
-
 
 #noMoviesFound {
     text-align: center;
@@ -109,12 +108,19 @@ h2 {
 
 .infoButton {
     float: left;
+    border:none;
+    background-color: inherit;
+    font-size: 1.1em;
+    cursor: pointer;
+    display: inline-block;
+    color: #686868;
+    font-style: italic;
+    padding-right: 30px;
 }
 
 .liAndButtonDiv {
     clear: both;
     padding: 20px;
-    
 }
 
 #searchMovieButton:hover,
@@ -201,37 +207,41 @@ h2 {
     }
 }
 
-@media screen and (min-width: 600px){
+@media screen and (min-width: 600px) {
     .header {
-    background-color: white;
-    max-width: 700px;
-    margin: 0px auto;
-}
-
-.image {
-    float: left;
-    width: 40%;
-}
+        background-color: white;
+        max-width: 700px;
+        margin: 0px auto;
+    }
+    .image {
+        float: left;
+        width: 40%;
+    }
+    h1 {
+        padding: 0px;
+        padding-top: 50px;
+        text-align: center;
+        float: right;
+        width: 60%;
+    }
+    li {
+        float: left;
+    }
+    .infoButton {
+        float: right;
+        line-height: 20px;
+    }
     
-h1 {
-    padding:0px;
-    padding-top: 50px;
-    text-align: center;
-    float: right;
-    width: 60%;
-}  
-    
-li {
-    float: left;
-}
-    
-#movieInformation p {
-    padding-left: 50px;
-    padding-right: 100px;
-}
-.liAndButtonDiv {
-    margin-left: 80px;
-    margin-right: 20px;
-} 
-    
+    .infoButton:hover{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #movieInformation p {
+        padding-left: 50px;
+        padding-right: 100px;
+    }
+    .liAndButtonDiv {
+        margin-left: 80px;
+        margin-right: 20px;
+    }
 }

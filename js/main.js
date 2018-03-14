@@ -7,21 +7,27 @@ movieInformation.appendChild(spinner)
 
 let globalMovieArray = [];
 
+//Get value from input field when clicking enter
 searchMovie.addEventListener('keyup', function (e) {
     const searchValue = searchMovie.value;
     if (searchValue === "") {
         errorMessageForEmptySearch();
     } else if (e.keyCode === 13) {
         getSearchedMovie(searchValue)
-    } 
+    }
 });
 
-//searchMovieButton.addEventListener('click', getSearchedMovie)
+//Get value from input field when clicking on the search button
+searchMovieButton.addEventListener('click', function () {
+    const searchValueButton = searchMovie.value;
+    getSearchedMovie(searchValueButton)
+})
 
+//Function to fetch movies from API
 function getSearchedMovie(movie) {
     fetch('https://www.omdbapi.com/?apikey=da783fad&s=' + movie + '')
         .then((response) => response.json())
-        .then(function (movies) { 
+        .then(function (movies) {
             //Make sure the array is ampty when doing a new search
             globalMovieArray.length = 0;
             globalMovieArray.push(movies);
@@ -32,13 +38,13 @@ function getSearchedMovie(movie) {
         .catch(function (error) {
             console.log(error);
         })
-    spinner.style.display="block";
+    spinner.style.display = "block";
     searchMovie.value = "";
 }
 
 //Create error message when doing an empty search
 function errorMessageForEmptySearch() {
-    spinner.style.display="none";
+    spinner.style.display = "none";
     const errorMessageIfInputIsEmpty = document.createElement('p')
     const textErrorMessageIfInputIsEmpty = document.createTextNode('You have to write a title to be able to search')
     errorMessageIfInputIsEmpty.appendChild(textErrorMessageIfInputIsEmpty)
@@ -46,12 +52,12 @@ function errorMessageForEmptySearch() {
 }
 
 
-
+//Function to display fetched movies
 function displayMovies(movies) {
     console.log(globalMovieArray);
     //Error message
     if (movies.Response === "False") {
-        spinner.style.display="none";
+        spinner.style.display = "none";
         const noMoviesFound = document.createElement('p');
         noMoviesFound.setAttribute("id", "noMoviesFound")
         const textNoMoviesFound = document.createTextNode(`${movies.Error} Please try again`);
@@ -69,17 +75,18 @@ function displayMovies(movies) {
         const movieTitleListed = document.createElement('li');
         movieTitleListed.classList.add = ('clear')
         const movieTitle = document.createTextNode(`${movies.Search[i].Title}`)
-        
+
         movieTitleListed.appendChild(movieTitle);
         liAndButtonDiv.appendChild(movieTitleListed);
         movieInformation.appendChild(liAndButtonDiv);
 
         buttonForMoreInformation(movies.Search[i].imdbID, liAndButtonDiv)
         console.log(movies.Search[i].Title);
-        spinner.style.display="none";
+        spinner.style.display = "none";
     }
 }
 
+//Funcion for creating more information button for each movie
 function buttonForMoreInformation(imdbID, liAndButtonDiv) {
     const moreInformationButton = document.createElement('button');
     moreInformationButton.classList.add("infoButton")
@@ -93,21 +100,24 @@ function buttonForMoreInformation(imdbID, liAndButtonDiv) {
         searchField.classList.add('hidden')
         //console.log(this.id)
         getMovieImdbId(imdbID);
+        spinner.style.display = "block";
     })
 }
 
+//Function to fetch more information about a specific movie
 function getMovieImdbId(imdbID) {
     fetch('https://www.omdbapi.com/?apikey=da783fad&i=' + imdbID + '')
         .then((response) => response.json())
         .then((theId) => {
-            spinner.style.display="block";
+            spinner.style.display = "block";
             console.log(theId);
             displayMoreInformationAboutMovie(theId)
             goBackToSearchButton()
-        
+
         })
 }
 
+//Function to display more infrormation about a specific movie
 function displayMoreInformationAboutMovie(theId) {
     let displayMoreInformation = `
     <h2>${theId.Title}</h2>
@@ -125,6 +135,7 @@ function displayMoreInformationAboutMovie(theId) {
     movieInformation.innerHTML = displayMoreInformation;
 }
 
+//Function to create a go back to search button
 function goBackToSearchButton() {
     const goBackButton = document.createElement('button')
     const divGoBackButton = document.createElement('div')
@@ -144,12 +155,3 @@ function goBackToSearchButton() {
         console.log(storedMovies);
     })
 }
-
-
-
-
-
-
-
-
-
