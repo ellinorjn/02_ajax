@@ -42,20 +42,13 @@ function getSearchedMovie(movie) {
     searchMovie.value = "";
 }
 
-function test(){
-    if(movieInformation.length > 0){
-        movieInformation[0].parentNode.removeChild(movieInformation[0])
-    }
-}
-
 //Create error message when doing an empty search
 function errorMessageForEmptySearch() {
-    spinner.style.display = "none";
+    spinner.style.display = "block";
     let errorMessageIfInputIsEmpty = `
         <p>You have to write a title to be able to search</p>`
     movieInformation.innerHTML=errorMessageIfInputIsEmpty
 }
-
 
 //Function to display fetched movies
 function displayMovies(movies) {
@@ -82,7 +75,7 @@ function displayMovies(movies) {
         const movieTitleListed = document.createElement('li');
         movieTitleListed.classList.add = ('clear')
         const movieTitle = document.createTextNode(`${movies.Search[i].Title}`)
-
+        
         movieTitleListed.appendChild(movieTitle);
         liAndButtonDiv.appendChild(movieTitleListed);
         movieInformation.appendChild(liAndButtonDiv);
@@ -155,10 +148,18 @@ function goBackToSearchButton() {
 
     goBackButton.addEventListener('click', function () {
 
-        localStorage.setItem("globalMovieArray", JSON.stringify(globalMovieArray));
-        const storedMovies = JSON.parse(localStorage.getItem("globalMovieArray"));
+        //localStorage.setItem("globalMovieArray", JSON.stringify(globalMovieArray));
+        //const storedMovies = JSON.parse(localStorage.getItem("globalMovieArray"));
 
-        displayMovies(storedMovies);
-        console.log(storedMovies);
+        //displayMovies(storedMovies)
+        //console.log(storedMovies);
+        
+        goBack();
     })
 }
+
+function goBack() {
+    window.history.go();
+      
+}
+
