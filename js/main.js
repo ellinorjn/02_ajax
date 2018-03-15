@@ -1,5 +1,6 @@
 const searchMovie = document.getElementById('searchMovie')
 const searchMovieButton = document.getElementById('searchMovieButton')
+const movieInformation = document.getElementById('movieInformation')
 
 
 const spinner = document.getElementById('spinner')
@@ -22,6 +23,8 @@ searchMovieButton.addEventListener('click', function () {
     const searchValueButton = searchMovie.value;
     getSearchedMovie(searchValueButton)
 })
+
+
 
 //Function to fetch movies from API
 function getSearchedMovie(movie) {
@@ -67,24 +70,35 @@ function displayMovies(movies) {
     }
 
     let searchedMovies = globalMovieArray[0].Search;
+    movieInformation.innerHTML = ""
     for (i = 0; i < searchedMovies.length; i++) {
-        //Div for listed movie and button
-        const liAndButtonDiv = document.createElement('div')
-        liAndButtonDiv.classList.add('liAndButtonDiv')
-        //Create li element for search result
-        const movieTitleListed = document.createElement('li');
-        movieTitleListed.classList.add = ('clear')
-        const movieTitle = document.createTextNode(`${movies.Search[i].Title}`)
         
-        movieTitleListed.appendChild(movieTitle);
-        liAndButtonDiv.appendChild(movieTitleListed);
-        movieInformation.appendChild(liAndButtonDiv);
-        
-        buttonForMoreInformation(movies.Search[i].imdbID, liAndButtonDiv)
-        console.log(movies.Search[i].Title);
-        spinner.style.display = "none";
+        movieInformation.innerHTML += ('<div class="liAndButtonDiv"> <li>' + `${movies.Search[i].Title}` + '</li></div>')
+            
+                
+    
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Funcion for creating more information button for each movie
 function buttonForMoreInformation(imdbID, liAndButtonDiv) {
