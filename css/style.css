@@ -8,6 +8,7 @@ main {
     height: 100%;
     margin: 0px auto;
     padding-top: 40px;
+    box-shadow: 0 0 3pt 2pt grey;
 }
 
 .clear {
@@ -40,7 +41,6 @@ h1 {
     text-align: center;
     padding: 20px;
     color: #4f4f4f;
-
 }
 
 h2 {
@@ -50,6 +50,7 @@ h2 {
     padding-bottom: 25px;
     text-decoration: underline;
     color: #666666;
+    font-style: italic;
 }
 
 .errorMessageEmptySearch,
@@ -102,14 +103,17 @@ h2 {
 
 #searchMovie {
     height: 40px;
-    width: 200px;
-    margin-top: 10px
+    width: 300px;
+    margin-top: 10px;
+    border-radius: 3px;
 }
 
 #searchMovie:focus {
-    outline: 2px solid darkgrey;
+    box-shadow: 0 0 2pt 1pt darkgrey;
+    outline:0px;
 }
 
+/*Movie information div*/
 #movieInformation {
     padding-bottom: 50px;
 }
@@ -160,17 +164,10 @@ h2 {
     display: none;
 }
 
-/*.goBackButton {
-    height: 40px;
-    
-}*/
-
 .divGoBackButton {
     margin-top: 30px;
     text-align:center;
 }
-
-
 
 /* Loading bar */
 
