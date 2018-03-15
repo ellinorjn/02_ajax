@@ -1,6 +1,6 @@
 const searchMovie = document.getElementById('searchMovie')
 const searchMovieButton = document.getElementById('searchMovieButton')
-//const movieInformation = document.getElementById('movieInformation')
+const movieInformation = document.getElementById('movieInformation')
 
 
 const spinner = document.getElementById('spinner')
@@ -21,10 +21,13 @@ searchMovie.addEventListener('keyup', function (e) {
 //Get value from input field when clicking on the search button
 searchMovieButton.addEventListener('click', function () {
     const searchValueButton = searchMovie.value;
-    getSearchedMovie(searchValueButton)
+    if (searchValueButton === "") {
+        errorMessageForEmptySearch();
+    } else {
+        getSearchedMovie(searchValueButton)
+        spinner.style.display = "block";
+    }
 })
-
-
 
 //Function to fetch movies from API
 function getSearchedMovie(movie) {
@@ -36,11 +39,11 @@ function getSearchedMovie(movie) {
             globalMovieArray.length = 0;
             globalMovieArray.push(movies);
             movieInformation.classList.remove('hidden')
-            console.log(movies)
             displayMovies(movies)
         })
         .catch(function (error) {
-            console.log(error);
+            let errorMessage = `<div class="messageNoMoviesFound"><p>Movie not found! Please try again</p></div>`
+            movieInformation.innerHTML = errorMessage
         })
     spinner.style.display = "block";
     searchMovie.value = "";
@@ -57,16 +60,7 @@ function errorMessageForEmptySearch() {
 //Function to display fetched movies
 function displayMovies(movies) {
     movieInformation.innerHTML = ""
-    console.log(globalMovieArray);
-    //Error message
-    if (movies.Response === "False") {
-        spinner.style.display = "block";
-        let noMoviesFound = `<div class="messageNoMoviesFound"><p>${movies.Error} Please try again</p></div>`
-        movieInformation.innerHTML = noMoviesFound
-    }
-
     let searchedMovies = globalMovieArray[0].Search;
-
     for (i = 0; i < searchedMovies.length; i++) {
         //Div for listed movie and button
         const liAndButtonDiv = document.createElement('div')
@@ -81,7 +75,6 @@ function displayMovies(movies) {
         movieInformation.appendChild(liAndButtonDiv);
 
         buttonForMoreInformation(movies.Search[i].imdbID, liAndButtonDiv)
-        console.log(movies.Search[i].Title);
         spinner.style.display = "none";
 
     }
@@ -99,7 +92,6 @@ function buttonForMoreInformation(imdbID, liAndButtonDiv) {
     moreInformationButton.addEventListener('click', function () {
         const searchField = document.getElementById('divSearchField')
         searchField.classList.add('hidden')
-        //console.log(this.id)
         getMovieImdbId(imdbID);
         spinner.style.display = "block";
     })
@@ -111,7 +103,6 @@ function getMovieImdbId(imdbID) {
         .then((response) => response.json())
         .then((theId) => {
             spinner.style.display = "block";
-            console.log(theId);
             displayMoreInformationAboutMovie(theId)
             goBackToSearchButton()
 
@@ -122,7 +113,7 @@ function getMovieImdbId(imdbID) {
 function displayMoreInformationAboutMovie(theId) {
     let displayMoreInformation = `
     <h2>${theId.Title}</h2>
-    <div class="moviePoster"><img src="${theId.Poster}"></div>
+    <div class="moviePoster"><img src="${theId.Poster}" alt="Picture of the movie"></div>
     <p><span class="plot">"${theId.Plot}"</span></p>
     <p><span class="bold">Imdb rating: </span> ${theId.imdbRating}</p>
     <p><span class="bold">Actors: </span>${theId.Actors}</p>
@@ -148,18 +139,11 @@ function goBackToSearchButton() {
     movieInformation.appendChild(divGoBackButton)
 
     goBackButton.addEventListener('click', function () {
-
-        //localStorage.setItem("globalMovieArray", JSON.stringify(globalMovieArray));
-        //const storedMovies = JSON.parse(localStorage.getItem("globalMovieArray"));
-
-        //displayMovies(storedMovies)
-        //console.log(storedMovies);
-
-        goBack();
+        goBackToStart();
     })
 }
 
-function goBack() {
+function goBackToStart() {
     window.history.go();
 
 }
