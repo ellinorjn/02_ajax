@@ -13,7 +13,7 @@ Det är ett API där du som användare får tillgång till filminformation. Allt
 kommer från och underhålls av APIets användare.
 
 
-Hade när jag började ingen konkret bild av hur jag ville att applikationen skulle se ut/ hur den skulle fungera när jag var klar. Det gjorde att det blev mycket onödigt arbete som bara raderades för att jag inte gjorde ett noggranade förarbete. Hur viktigt det är med ett ordentligt förarbete inser jag mer och mer för varje uppgift jag gör. Nu när jag började på ett "dåligt" sätt tappade jag massa tid, hade jag gjort ett bättre förarbete hade jag nog haft mer tid över att implementera fler funktioner i applikationen. Började nu alltså koda direkt utan tydlig slutbild vilket som sagt gjorde att mycket arbete bara raderades för att jag ändrade mig. 
+Hade när jag började ingen konkret bild av hur jag ville att applikationen skulle se ut/ hur den skulle fungera när jag var klar. Det gjorde att det blev mycket onödigt arbete som bara raderades för att jag inte gjorde ett noggranade förarbete, hur viktigt det är med ett ordentligt förarbete inser jag mer och mer för varje uppgift jag gör. Nu när jag började på ett "dåligt" sätt tappade jag massa tid, hade jag gjort ett bättre förarbete hade jag nog haft mer tid över att implementera fler funktioner i applikationen. Började nu alltså koda direkt utan tydlig slutbild vilket som sagt gjorde att mycket arbete bara raderades för att jag hela tiden ändrade mig. 
 
 
 **Saker jag hade gjort om mer tid fanns:**
