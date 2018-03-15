@@ -1,6 +1,6 @@
 const searchMovie = document.getElementById('searchMovie')
 const searchMovieButton = document.getElementById('searchMovieButton')
-const movieInformation = document.getElementById('movieInformation')
+//const movieInformation = document.getElementById('movieInformation')
 
 
 const spinner = document.getElementById('spinner')
@@ -28,6 +28,7 @@ searchMovieButton.addEventListener('click', function () {
 
 //Function to fetch movies from API
 function getSearchedMovie(movie) {
+    spinner.style.display = "block";
     fetch('https://www.omdbapi.com/?apikey=da783fad&s=' + movie + '')
         .then((response) => response.json())
         .then(function (movies) {
@@ -49,30 +50,24 @@ function getSearchedMovie(movie) {
 function errorMessageForEmptySearch() {
     spinner.style.display = "block";
     let errorMessageIfInputIsEmpty = `
-        <p>You have to write a title to be able to search</p>`
+        <div class="errorMessageEmptySearch"><p>You have to write a title to be able to search</p></div>`
     movieInformation.innerHTML = errorMessageIfInputIsEmpty
 }
 
 //Function to display fetched movies
 function displayMovies(movies) {
+    movieInformation.innerHTML = ""
     console.log(globalMovieArray);
     //Error message
     if (movies.Response === "False") {
         spinner.style.display = "block";
-        let noMoviesFound = `<p>${movies.Error} Please try again</p>`
+        let noMoviesFound = `<div class="messageNoMoviesFound"><p>${movies.Error} Please try again</p></div>`
         movieInformation.innerHTML = noMoviesFound
-        /*const noMoviesFound = document.createElement('p');
-        noMoviesFound.setAttribute("id", "noMoviesFound")
-        const textNoMoviesFound = document.createTextNode(`${movies.Error} Please try again`);
-        noMoviesFound.appendChild(textNoMoviesFound);
-        movieInformation.appendChild(noMoviesFound);
-        console.log("nyh");*/
     }
 
     let searchedMovies = globalMovieArray[0].Search;
-    movieInformation.innerHTML = ""
-    for (i = 0; i < searchedMovies.length; i++) {
 
+    for (i = 0; i < searchedMovies.length; i++) {
         //Div for listed movie and button
         const liAndButtonDiv = document.createElement('div')
         liAndButtonDiv.classList.add('liAndButtonDiv')
@@ -91,14 +86,6 @@ function displayMovies(movies) {
 
     }
 }
-
-
-
-
-
-
-
-
 
 //Funcion for creating more information button for each movie
 function buttonForMoreInformation(imdbID, liAndButtonDiv) {

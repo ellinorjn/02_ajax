@@ -55,6 +55,12 @@ h2 {
     text-decoration: underline;
 }
 
+.errorMessageEmptySearch,
+.messageNoMoviesFound{
+    text-align: center;
+    font-style: italic;
+}
+
 #noMoviesFound {
     text-align: center;
     font-style: italic;
