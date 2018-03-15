@@ -50,7 +50,7 @@ function errorMessageForEmptySearch() {
     spinner.style.display = "block";
     let errorMessageIfInputIsEmpty = `
         <p>You have to write a title to be able to search</p>`
-    movieInformation.innerHTML=errorMessageIfInputIsEmpty
+    movieInformation.innerHTML = errorMessageIfInputIsEmpty
 }
 
 //Function to display fetched movies
@@ -72,25 +72,25 @@ function displayMovies(movies) {
     let searchedMovies = globalMovieArray[0].Search;
     movieInformation.innerHTML = ""
     for (i = 0; i < searchedMovies.length; i++) {
-        
-        movieInformation.innerHTML += ('<div class="liAndButtonDiv"> <li>' + `${movies.Search[i].Title}` + '</li></div>')
-            
-                
-    
+
+        //Div for listed movie and button
+        const liAndButtonDiv = document.createElement('div')
+        liAndButtonDiv.classList.add('liAndButtonDiv')
+        //Create li element for search result
+        const movieTitleListed = document.createElement('li');
+        movieTitleListed.classList.add = ('clear')
+        const movieTitle = document.createTextNode(`${movies.Search[i].Title}`)
+
+        movieTitleListed.appendChild(movieTitle);
+        liAndButtonDiv.appendChild(movieTitleListed);
+        movieInformation.appendChild(liAndButtonDiv);
+
+        buttonForMoreInformation(movies.Search[i].imdbID, liAndButtonDiv)
+        console.log(movies.Search[i].Title);
+        spinner.style.display = "none";
+
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -167,13 +167,12 @@ function goBackToSearchButton() {
 
         //displayMovies(storedMovies)
         //console.log(storedMovies);
-        
+
         goBack();
     })
 }
 
 function goBack() {
     window.history.go();
-      
-}
 
+}
