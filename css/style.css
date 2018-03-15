@@ -10,11 +10,6 @@ main {
     padding-top: 40px;
 }
 
-
-/*#movieInformation>img {
-    margin: 0px auto;
-}*/
-
 .clear {
     clear: both;
 }
@@ -52,7 +47,7 @@ h2 {
     width: 70%;
     padding-bottom: 25px;
     text-decoration: underline;
-    color: darkgrey;
+    color: #666666;
 }
 
 .errorMessageEmptySearch,
@@ -99,10 +94,13 @@ h2 {
 .inputfieldAndButton {
     margin: 0px auto;
     text-align: center;
+    margin-top: 25px;
 }
 
 #searchMovie {
     height: 40px;
+    width: 200px;
+    margin-top: 10px
 }
 
 #searchMovie:focus {
@@ -110,8 +108,11 @@ h2 {
 }
 
 #movieInformation {
-    padding-top: 40px;
     padding-bottom: 50px;
+}
+
+#movieInformation P{
+    padding-left: 10px;
 }
 
 .infoButton {
@@ -131,12 +132,17 @@ h2 {
     padding: 20px;
 }
 
-#searchMovieButton:hover,
-.moreInformationButton:hover,
-.goBackButton:hover {
-    background-color: darkgrey;
-    border: 2px solid grey;
-    opacity: 0.8;
+#searchMovieButton,
+.goBackButton{
+    margin: 10px;
+    border:none;
+    background-color: inherit;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: inline-block;
+    color: #686868;
+    text-decoration: underline;
+    line-height: 20px;
 }
 
 .moviePoster {
@@ -151,14 +157,16 @@ h2 {
     display: none;
 }
 
-.goBackButton {
+/*.goBackButton {
     height: 40px;
-}
+    
+}*/
 
 .divGoBackButton {
-    text-align: center;
-    margin-bottom: 30px;
+    margin-top: 30px;
+    text-align:center;
 }
+
 
 
 /* Loading bar */
@@ -240,6 +248,17 @@ h2 {
     li {
         float: left;
     }
+    
+    #searchMovie{
+        margin-top: 40px;
+    }
+    
+    #searchMovieButton:hover{
+        font-size: 1.3em;
+        
+        transition-duration: 0.5s;
+    }
+    
     .infoButton {
         float: right;
         line-height: 20px;
@@ -249,6 +268,10 @@ h2 {
         font-size: 20px;
         font-weight: bold;
         transition-duration: 0.5s;
+    }
+    
+    #movieInformation{
+        padding-top: 40px;
     }
     #movieInformation p {
         padding-left: 50px;
