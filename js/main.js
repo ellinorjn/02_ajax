@@ -35,7 +35,7 @@ function getSearchedMovie(movie) {
     fetch('https://www.omdbapi.com/?apikey=da783fad&s=' + movie + '')
         .then((response) => response.json())
         .then(function (movies) {
-            //Make sure the array is ampty when doing a new search
+            //Make sure the array is empty when doing a new search
             globalMovieArray.length = 0;
             globalMovieArray.push(movies);
             movieInformation.classList.remove('hidden')
